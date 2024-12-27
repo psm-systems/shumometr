@@ -34,6 +34,10 @@ def tst_bot(msg):
 
 @bot.message_handler(content_types=['voice'])
 def voice_processing(message):
+    if not os.path.isdir('../image_message'):
+        os.mkdir('../image_message')
+    if not os.path.isdir('../voice_message'):
+        os.mkdir('../voice_message')
     file_info = bot.get_file(message.voice.file_id)
     downloaded_file = bot.download_file(file_info.file_path)
 
